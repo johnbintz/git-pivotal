@@ -17,8 +17,4 @@ describe Commands::Feature do
     @feature.plural_type.should == "features"
   end
   
-  it "should specify its branch suffix" do
-    @feature.branch_suffix.should == "feature"
-  end
-  
 end

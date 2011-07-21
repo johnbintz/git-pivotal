@@ -1,4 +1,5 @@
 require 'commands/base'
+require 'babosa'
 
 module Commands
   class Pick < Base
@@ -8,10 +9,6 @@ module Commands
     end
 
     def plural_type
-      raise Error("must define in subclass")
-    end
-
-    def branch_suffix
       raise Error("must define in subclass")
     end
 
@@ -36,12 +33,13 @@ module Commands
       put "Updating #{type} status in Pivotal Tracker..."
       if story.update(:owned_by => options[:full_name], :current_state => :started)
 
+        slugifyed_title = story.name.to_slug.normalize.to_s
         suffix_or_prefix = ""
         unless options[:quiet] || options[:defaults]
-          put "Enter branch name (will be #{options[:append_name] ? 'appended' : 'prepended'} by #{story.id}) [#{suffix_or_prefix}]: ", false
+          put "Enter branch name or press Enter to use story title (will be #{options[:append_name] ? 'appended' : 'prepended'} by #{story.id}) [#{slugifyed_title}]: ", false
           suffix_or_prefix = input.gets.chomp
         end
-        suffix_or_prefix = branch_suffix if suffix_or_prefix == ""
+        suffix_or_prefix = slugifyed_title if suffix_or_prefix == ""
 
         if options[:append_name]
           branch = "#{suffix_or_prefix}-#{story.id}"

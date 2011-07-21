@@ -11,9 +11,5 @@ module Commands
       "features"
     end
     
-    def branch_suffix
-      "feature"
-    end
-
   end
 end

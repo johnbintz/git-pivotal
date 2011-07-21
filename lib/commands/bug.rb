@@ -11,9 +11,5 @@ module Commands
       "bugs"
     end
     
-    def branch_suffix
-      "bugfix"
-    end
-
   end
 end

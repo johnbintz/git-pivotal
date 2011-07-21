@@ -17,8 +17,4 @@ describe Commands::Bug do
     @bug.plural_type.should == "bugs"
   end
   
-  it "should specify its branch suffix" do
-    @bug.branch_suffix.should == "bugfix"
-  end
-  
 end

@@ -56,7 +56,7 @@ describe Commands::Finish do
     before(:each) do
       # stub out git status request to identify the branch
       branch_name = "invalid-branch-name-without-story-id"
-      Commands::Finish.any_instance.stubs(:get).with { |v| v =~ /git status/ }.returns("# On branch #{branch_name}")
+      Commands::Finish.any_instance.stubs(:get).with { |v| v =~ /git symbolic-ref/ }.returns(branch_name)
     end
 
     it "should return an exit status of one" do
@@ -76,7 +76,7 @@ describe Commands::Finish do
 
     before(:each) do
       # stub out git status request to identify the branch
-      Commands::Finish.any_instance.stubs(:get).with { |v| v =~ /git status/ }.returns("# On branch #{branch_name}")
+      Commands::Finish.any_instance.stubs(:get).with { |v| v =~ /git symbolic-ref/ }.returns(branch_name)
     end
 
     it "should attempt to update the story status to the stories finished_state" do

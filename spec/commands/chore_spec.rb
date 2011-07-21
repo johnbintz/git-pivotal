@@ -17,8 +17,4 @@ describe Commands::Chore do
     @chore.plural_type.should == "chores"
   end
   
-  it "should specify its branch suffix" do
-    @chore.branch_suffix.should == "chore"
-  end
-  
 end

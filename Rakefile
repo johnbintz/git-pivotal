@@ -15,6 +15,7 @@ begin
     
     gemspec.add_dependency "builder"
     gemspec.add_dependency "pivotal-tracker", "~>0.3.1"
+    gemspec.add_dependency "babosa"
     
     gemspec.add_development_dependency "rspec", "~>2.5.0"
     gemspec.add_development_dependency "rcov"
